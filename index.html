@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MDView Lite</title>
+  </head>
+  <body>
+    <div id="app">
+      <header class="toolbar">
+        <div class="toolbar-group">
+          <button id="btn-open" class="btn" title="打开 (Ctrl+O)">打开</button>
+          <button id="btn-save" class="btn" title="保存 (Ctrl+S)">保存</button>
+          <button id="btn-save-as" class="btn" title="另存为">另存为</button>
+          <button id="btn-print" class="btn" title="导出 PDF / 打印 (Ctrl+P)">导出 PDF</button>
+          <button id="btn-assoc" class="btn" title="把 .md 默认用本应用打开">关联 .md</button>
+        </div>
+        <div class="toolbar-title" id="doc-title">未命名</div>
+        <div class="toolbar-group">
+          <button id="btn-edit" class="btn toggle" title="编辑/预览">编辑</button>
+          <button id="btn-toc" class="btn toggle" title="目录">目录</button>
+          <select id="theme-select" class="select" title="主题">
+            <option value="system">跟随系统</option>
+            <option value="light">浅色</option>
+            <option value="dark">深色</option>
+          </select>
+        </div>
+      </header>
+
+      <main class="workspace">
+        <section class="pane editor-pane" id="editor-pane">
+          <div id="editor"></div>
+        </section>
+        <div class="splitter" id="splitter"></div>
+        <section class="pane preview-pane" id="preview-pane">
+          <article id="preview" class="markdown-body"></article>
+        </section>
+        <aside class="toc-panel" id="toc-panel">
+          <div class="toc-head">
+            <span>目录</span>
+            <button id="toc-close" class="btn-icon" title="关闭">×</button>
+          </div>
+          <nav id="toc-list" class="toc-list"></nav>
+        </aside>
+      </main>
+
+      <footer class="statusbar">
+        <span id="status-file">未打开文件</span>
+        <span id="status-words">0 词</span>
+        <span id="status-hint">拖入 .md 文件即可打开</span>
+      </footer>
+    </div>
+    <input type="file" id="file-input" accept=".md,.markdown,.mdx,.txt" hidden />
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
