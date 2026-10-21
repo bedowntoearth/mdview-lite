@@ -2,6 +2,26 @@
 
 本地运行的 Markdown 阅读与编辑器，基于 Tauri 2 + WebView2。左侧编辑、右侧实时预览，支持数学公式、Mermaid 图表、目录导航与 PDF 导出。
 
+## 系统要求
+
+| 项目 | 要求 |
+| --- | --- |
+| 操作系统 | Windows 10（1809 及以上）或 Windows 11 |
+| 架构 | x64（当前只构建了 x64） |
+| 磁盘占用 | 安装版约 10 MB；便携版为单个 exe，约 5.5 MB |
+| 管理员权限 | 不需要，安装包按当前用户安装 |
+
+macOS 与 Linux 目前不支持。Tauri 本身跨平台，但本仓库的文件关联与“设为默认”逻辑调用了 Windows 注册表和 `ShellExecuteW`，需要在对应平台改写后才能编译运行；界面与渲染部分本身不依赖 Windows。
+
+## 运行时依赖
+
+- **必须**：Microsoft Edge WebView2 Runtime。Windows 11 和多数 Windows 10 已随 Edge 预装。
+  - 安装包检测到缺失时会自动联网下载并静默安装（`downloadBootstrapper`）
+  - 便携版不会自动安装，系统缺少 WebView2 时需自行安装
+- **不需要**：Node.js、Rust、.NET、Java、Python 等运行时
+- **不需要**：浏览器插件、VS Code 扩展或任何编辑器插件
+- **不需要联网**：CodeMirror 6、KaTeX、Mermaid、highlight.js 及字体全部打包进程序，运行时不请求 CDN
+
 ## 功能
 
 - **渲染**：GFM 表格、任务列表、引用、图片、链接、脚注式排版
